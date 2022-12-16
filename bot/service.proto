@@ -1,0 +1,474 @@
+syntax = "proto3";
+
+package bot;
+
+import "google/api/annotations.proto";
+
+option go_package = ".;bot";
+
+message CallBackRequest {
+  string script_version = 1;
+  CreateBuyOrderRequest buy = 2;
+  CancelOrderRequest cancel = 3;
+  CreateSellOrderRequest sell = 4;
+  string opentrades = 5;
+  string side = 6;
+  string symbol = 7;
+}
+
+message CallBackResponse {
+  bool status = 1;
+}
+
+message CreateBuyOrderRequest {
+  string symbol = 1;
+  string token = 2;
+  repeated Order order = 3;
+  string side = 4;
+}
+
+message CreateBuyOrderResponse {
+  string status = 1;
+}
+
+message CancelOrderRequest {
+  string symbol = 1;
+  string token = 2;
+  int64 count = 3;
+}
+
+message CancelOrderResponse {
+  string status = 1;
+}
+
+message CreateSellOrderRequest {
+  string symbol = 1;
+  string token = 2;
+  repeated Order order = 3;
+  string side = 4;
+}
+
+message CreateSellOrderResponse {
+  string status = 1;
+}
+
+message AuthRequest {
+  string login = 1;
+  string pass = 2;
+}
+
+message AuthResponse {
+  string token = 1;
+  string error = 2;
+}
+
+message CreateUserRequest {
+  User user = 1;
+}
+
+message CreateUserResponse {
+  bool success = 1;
+  string token = 2;
+  string error = 3;
+}
+
+message UpdateUserSettingRequest {
+  User user = 2;
+  BotSetting bot = 3;
+  BinanceSetting binance = 4;
+  string token = 5;
+}
+
+message UpdateUserSettingResponse {
+  bool success = 1;
+  string error = 2;
+}
+
+message GetUserSettingRequest {
+  string token = 2;
+}
+
+message GetUserSettingResponse {
+  User user = 1;
+  BotSetting bot = 2;
+  BinanceSetting binance = 3;
+}
+
+message GetUserStatRequest {
+  string token = 1;
+}
+
+message GetUserStatResponse {
+  Statistic stat = 1;
+}
+
+message GetUserPositionsRequest {
+  string token = 1;
+}
+
+message GetUserPositionsResponse {
+  repeated Position positions = 1;
+}
+
+message GetUserOperationsRequest {
+  string token = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+}
+
+message GetUserOperationsResponse {
+  repeated Operation operations = 1;
+}
+
+message GetUserOperationHistoryRequest {
+  string token = 1;
+  string from_date = 2;
+}
+
+message GetUserOperationHistoryResponse {
+  repeated OperationHistory operations = 1;
+}
+
+message SwitchBotStateRequest {
+  string token = 1;
+}
+
+message SwitchBotStateResponse {
+  int32 status = 1;
+}
+
+message GetSymbolsRequest {
+  string token = 1;
+}
+
+message GetSymbolsResponse {
+  repeated Symbol symbols = 1;
+}
+
+message IntegrationGetUsersSecureRequest {
+  string token = 1;
+}
+
+message IntegrationGetUsersSecureResponse {
+  repeated IntegrationBotUser users = 1;
+}
+
+message IntegrationUserStatusRequest {
+  string token = 1;
+}
+
+message IntegrationUserStatusResponse {
+  IntegrationEnabledUser users = 1;
+}
+
+message IntegrationUserStatisticsRequest {
+  string token = 1;
+  repeated Statistics stat = 2;
+}
+
+message IntegrationUserStatisticsResponse {
+  bool success = 1;
+}
+
+message GetUserInvitesRequest {
+  string token = 1;
+}
+
+message GetUserInvitesResponse {
+  repeated string invite = 1;
+}
+
+message GetUserWalletRequest {
+  string token = 1;
+}
+
+message GetUserWalletResponse {
+  Wallet wallet = 1;
+}
+
+message CreateUserPaymentRequest {
+  string token = 1;
+  float amount = 2;
+}
+
+message CreateUserPaymentResponse {
+  string payment_url = 1;
+}
+
+message GetUserPaymentStatusRequest {
+  string token = 1;
+}
+
+message GetUserPaymentStatusResponse {
+  string status = 1;
+}
+
+message CheckUserKeysRequest {
+  string token = 1;
+}
+
+message CheckUserKeysResponse {
+  bool success = 1;
+}
+
+message CallBackPaymentRequest {
+  string status = 1;
+  string invoice_id = 2;
+  float amount_crypto = 3;
+  string currency = 4;
+  string order_id = 5;
+}
+
+message CallBackPaymentResponse {
+  bool success = 1;
+}
+
+service Service {
+  rpc CallBack (CallBackRequest) returns (CallBackResponse) {
+    option (google.api.http) = {
+      post: "/api/callback"
+      body: "*"
+    };
+  };
+
+  rpc CreateBuyOrder (CreateBuyOrderRequest) returns (CreateBuyOrderResponse) {
+    option (google.api.http) = {
+      post: "/api/order/buy"
+      body: "*"
+    };
+  };
+
+  rpc CancelOrder (CancelOrderRequest) returns (CancelOrderResponse) {
+    option (google.api.http) = {
+      post: "/api/order/cancel"
+      body: "*"
+    };
+  };
+
+  rpc CreateSellOrder (CreateSellOrderRequest) returns (CreateSellOrderResponse) {
+    option (google.api.http) = {
+      post: "/api/order/sell"
+      body: "*"
+    };
+  };
+
+  rpc Auth (AuthRequest) returns (AuthResponse) {
+    option (google.api.http) = {
+      post: "/api/user/auth"
+      body: "*"
+    };
+  };
+
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {
+    option (google.api.http) = {
+      post: "/api/user/create"
+      body: "*"
+    };
+  };
+
+  rpc UpdateUserSetting (UpdateUserSettingRequest) returns (UpdateUserSettingResponse) {
+    option (google.api.http) = {
+      post: "/api/user/setting"
+      body: "*"
+    };
+  };
+
+  rpc GetUserSetting (GetUserSettingRequest) returns (GetUserSettingResponse) {
+    option (google.api.http) = {
+      get: "/api/user/setting"
+    };
+  };
+
+  rpc GetUserStat (GetUserStatRequest) returns (GetUserStatResponse) {
+    option (google.api.http) = {
+      get: "/api/user/stat"
+    };
+  };
+
+  rpc GetUserPositions (GetUserPositionsRequest) returns (GetUserPositionsResponse) {
+    option (google.api.http) = {
+      get: "/api/user/positions"
+    };
+  };
+
+  rpc GetUserOperations (GetUserOperationsRequest) returns (GetUserOperationsResponse) {
+    option (google.api.http) = {
+      get: "/api/user/operations"
+    };
+  };
+
+  rpc GetUserOperationHistory (GetUserOperationHistoryRequest) returns (GetUserOperationHistoryResponse) {
+    option (google.api.http) = {
+      get: "/api/user/operations_history"
+    };
+  };
+
+  rpc GetUserInvites (GetUserInvitesRequest) returns (GetUserInvitesResponse) {
+    option (google.api.http) = {
+      get: "/api/user/invites"
+    };
+  };
+
+  rpc GetUserWallet (GetUserWalletRequest) returns (GetUserWalletResponse) {
+    option (google.api.http) = {
+      get: "/api/user/wallet"
+    };
+  };
+
+  rpc CreateUserPayment (CreateUserPaymentRequest) returns (CreateUserPaymentResponse) {
+    option (google.api.http) = {
+      post: "/api/user/payment"
+      body: "*"
+    };
+  };
+
+  rpc GetUserPaymentStatus (GetUserPaymentStatusRequest) returns (GetUserPaymentStatusResponse) {
+    option (google.api.http) = {
+      get: "/api/user/payment"
+    };
+  };
+
+  rpc CheckUserKeys (CheckUserKeysRequest) returns (CheckUserKeysResponse) {
+    option (google.api.http) = {
+      get: "/api/user/check_key"
+    };
+  };
+
+  rpc CallBackPayment (CallBackPaymentRequest) returns (CallBackPaymentResponse) {
+    option (google.api.http) = {
+      get: "/api/payment/callback"
+    };
+  };
+
+  rpc SwitchBotState (SwitchBotStateRequest) returns (SwitchBotStateResponse) {
+    option (google.api.http) = {
+      post: "/api/bot/state"
+      body: "*"
+    };
+  };
+
+  rpc GetSymbols (GetSymbolsRequest) returns (GetSymbolsResponse) {
+    option (google.api.http) = {
+      get: "/api/bot/symbols"
+    };
+  };
+
+  rpc IntegrationGetUser (IntegrationGetUsersSecureRequest) returns (IntegrationGetUsersSecureResponse) {
+    option (google.api.http) = {
+      get: "/api/integration/users"
+    };
+  };
+
+  rpc IntegrationUserStatus (IntegrationUserStatusRequest) returns (IntegrationUserStatusResponse) {
+    option (google.api.http) = {
+      get: "/api/integration/users/check"
+    };
+  };
+
+  rpc IntegrationUserStatistics (IntegrationUserStatisticsRequest) returns (IntegrationUserStatisticsResponse) {
+    option (google.api.http) = {
+      post: "/api/integration/user/statistic"
+      body: "*"
+    };
+  };
+}
+
+message Order {
+  float quantity = 1;
+  float price = 2;
+  float entry_price = 3;
+}
+
+message User {
+  string email = 2;
+  string login = 3;
+  string password = 4;
+  string telegram = 5;
+  string invite = 6;
+}
+
+message Statistic {
+  float profit = 1;
+  float profit_percent = 2;
+  float amount = 3;
+  BotStatus status = 4;
+}
+
+enum BotStatus {
+  DISABLE = 0;
+  WAITING_ORDER = 1;
+  ORDER = 2;
+  POSITION = 3;
+  POSITION_AND_ORDER = 4;
+  DISABLING = 5;
+}
+
+message Position {
+  string symbol = 1;
+  float quantity = 2;
+  float entry_price = 3;
+  float current_price = 4;
+  float profit = 5;
+  float profit_percent = 6;
+}
+
+message Operation {
+  string symbol = 1;
+  string date_time = 2;
+  float quantity = 3;
+  float entry_price = 4;
+  float exit_price = 5;
+  float profit = 6;
+  float profit_percent = 7;
+}
+
+message OperationHistory {
+  Operation operation = 1;
+  float com_profit = 2;
+  float com_percent_profit = 3;
+}
+
+message BotSetting {
+  float amount = 1;
+  int32 risk = 2;
+  repeated Symbol symbols = 3;
+}
+
+message Symbol {
+  string name = 1;
+  float price = 2;
+  float min_amount = 3;
+}
+
+message IntegrationBotUser {
+  int32 id = 1;
+  BotSetting setting = 2;
+  BinanceSetting keys = 3;
+}
+
+message IntegrationEnabledUser {
+  repeated int32 id = 1;
+}
+
+message Statistics {
+  int32 user_id = 1;
+  int64 external_id = 2;
+  string symbol = 3;
+  float entry_price = 4;
+  float exit_price = 5;
+  float quantity = 6;
+  float leverage = 7;
+  string side = 8;
+  float profit = 9;
+  float profit_percent = 10;
+  int64 cdate = 11;
+}
+
+message BinanceSetting {
+  string api_key = 1;
+  string secret_key = 2;
+}
+
+message Wallet {
+  int32 amount = 1;
+}

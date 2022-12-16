@@ -1,0 +1,1446 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "service.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/bot/state": {
+      "post": {
+        "operationId": "SwitchBotState",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botSwitchBotStateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botSwitchBotStateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/bot/symbols": {
+      "get": {
+        "operationId": "GetSymbols",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botGetSymbolsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/callback": {
+      "post": {
+        "operationId": "CallBack",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botCallBackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botCallBackRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/integration/user/statistic": {
+      "post": {
+        "operationId": "IntegrationUserStatistics",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botIntegrationUserStatisticsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botIntegrationUserStatisticsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/integration/users": {
+      "get": {
+        "operationId": "IntegrationGetUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botIntegrationGetUsersSecureResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/integration/users/check": {
+      "get": {
+        "operationId": "IntegrationUserStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botIntegrationUserStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/order/buy": {
+      "post": {
+        "operationId": "CreateBuyOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botCreateBuyOrderResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botCreateBuyOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/order/cancel": {
+      "post": {
+        "operationId": "CancelOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botCancelOrderResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botCancelOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/order/sell": {
+      "post": {
+        "operationId": "CreateSellOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botCreateSellOrderResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botCreateSellOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/payment/callback": {
+      "get": {
+        "operationId": "CallBackPayment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botCallBackPaymentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "invoice_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "amount_crypto",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "float"
+          },
+          {
+            "name": "currency",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/auth": {
+      "post": {
+        "operationId": "Auth",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botAuthResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botAuthRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/check_key": {
+      "get": {
+        "operationId": "CheckUserKeys",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botCheckUserKeysResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/create": {
+      "post": {
+        "operationId": "CreateUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botCreateUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botCreateUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/invites": {
+      "get": {
+        "operationId": "GetUserInvites",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botGetUserInvitesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/operations": {
+      "get": {
+        "operationId": "GetUserOperations",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botGetUserOperationsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/operations_history": {
+      "get": {
+        "operationId": "GetUserOperationHistory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botGetUserOperationHistoryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/payment": {
+      "get": {
+        "operationId": "GetUserPaymentStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botGetUserPaymentStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      },
+      "post": {
+        "operationId": "CreateUserPayment",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botCreateUserPaymentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botCreateUserPaymentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/positions": {
+      "get": {
+        "operationId": "GetUserPositions",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botGetUserPositionsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/setting": {
+      "get": {
+        "operationId": "GetUserSetting",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botGetUserSettingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      },
+      "post": {
+        "operationId": "UpdateUserSetting",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botUpdateUserSettingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/botUpdateUserSettingRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/stat": {
+      "get": {
+        "operationId": "GetUserStat",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botGetUserStatResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    },
+    "/api/user/wallet": {
+      "get": {
+        "operationId": "GetUserWallet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/botGetUserWalletResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Service"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "botAuthRequest": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "pass": {
+          "type": "string"
+        }
+      }
+    },
+    "botAuthResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "botBinanceSetting": {
+      "type": "object",
+      "properties": {
+        "api_key": {
+          "type": "string"
+        },
+        "secret_key": {
+          "type": "string"
+        }
+      }
+    },
+    "botBotSetting": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "float"
+        },
+        "risk": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "symbols": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/botSymbol"
+          }
+        }
+      }
+    },
+    "botBotStatus": {
+      "type": "string",
+      "enum": [
+        "DISABLE",
+        "WAITING_ORDER",
+        "ORDER",
+        "POSITION",
+        "POSITION_AND_ORDER",
+        "DISABLING"
+      ],
+      "default": "DISABLE"
+    },
+    "botCallBackPaymentResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        }
+      }
+    },
+    "botCallBackRequest": {
+      "type": "object",
+      "properties": {
+        "script_version": {
+          "type": "string"
+        },
+        "buy": {
+          "$ref": "#/definitions/botCreateBuyOrderRequest"
+        },
+        "cancel": {
+          "$ref": "#/definitions/botCancelOrderRequest"
+        },
+        "sell": {
+          "$ref": "#/definitions/botCreateSellOrderRequest"
+        },
+        "opentrades": {
+          "type": "string"
+        },
+        "side": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        }
+      }
+    },
+    "botCallBackResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "botCancelOrderRequest": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "botCancelOrderResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "botCheckUserKeysResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        }
+      }
+    },
+    "botCreateBuyOrderRequest": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/botOrder"
+          }
+        },
+        "side": {
+          "type": "string"
+        }
+      }
+    },
+    "botCreateBuyOrderResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "botCreateSellOrderRequest": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/botOrder"
+          }
+        },
+        "side": {
+          "type": "string"
+        }
+      }
+    },
+    "botCreateSellOrderResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "botCreateUserPaymentRequest": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "botCreateUserPaymentResponse": {
+      "type": "object",
+      "properties": {
+        "payment_url": {
+          "type": "string"
+        }
+      }
+    },
+    "botCreateUserRequest": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/botUser"
+        }
+      }
+    },
+    "botCreateUserResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "token": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "botGetSymbolsResponse": {
+      "type": "object",
+      "properties": {
+        "symbols": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/botSymbol"
+          }
+        }
+      }
+    },
+    "botGetUserInvitesResponse": {
+      "type": "object",
+      "properties": {
+        "invite": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "botGetUserOperationHistoryResponse": {
+      "type": "object",
+      "properties": {
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/botOperationHistory"
+          }
+        }
+      }
+    },
+    "botGetUserOperationsResponse": {
+      "type": "object",
+      "properties": {
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/botOperation"
+          }
+        }
+      }
+    },
+    "botGetUserPaymentStatusResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "botGetUserPositionsResponse": {
+      "type": "object",
+      "properties": {
+        "positions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/botPosition"
+          }
+        }
+      }
+    },
+    "botGetUserSettingResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/botUser"
+        },
+        "bot": {
+          "$ref": "#/definitions/botBotSetting"
+        },
+        "binance": {
+          "$ref": "#/definitions/botBinanceSetting"
+        }
+      }
+    },
+    "botGetUserStatResponse": {
+      "type": "object",
+      "properties": {
+        "stat": {
+          "$ref": "#/definitions/botStatistic"
+        }
+      }
+    },
+    "botGetUserWalletResponse": {
+      "type": "object",
+      "properties": {
+        "wallet": {
+          "$ref": "#/definitions/botWallet"
+        }
+      }
+    },
+    "botIntegrationBotUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "setting": {
+          "$ref": "#/definitions/botBotSetting"
+        },
+        "keys": {
+          "$ref": "#/definitions/botBinanceSetting"
+        }
+      }
+    },
+    "botIntegrationEnabledUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "botIntegrationGetUsersSecureResponse": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/botIntegrationBotUser"
+          }
+        }
+      }
+    },
+    "botIntegrationUserStatisticsRequest": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "stat": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/botStatistics"
+          }
+        }
+      }
+    },
+    "botIntegrationUserStatisticsResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        }
+      }
+    },
+    "botIntegrationUserStatusResponse": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "$ref": "#/definitions/botIntegrationEnabledUser"
+        }
+      }
+    },
+    "botOperation": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string"
+        },
+        "date_time": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "number",
+          "format": "float"
+        },
+        "entry_price": {
+          "type": "number",
+          "format": "float"
+        },
+        "exit_price": {
+          "type": "number",
+          "format": "float"
+        },
+        "profit": {
+          "type": "number",
+          "format": "float"
+        },
+        "profit_percent": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "botOperationHistory": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "$ref": "#/definitions/botOperation"
+        },
+        "com_profit": {
+          "type": "number",
+          "format": "float"
+        },
+        "com_percent_profit": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "botOrder": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "number",
+          "format": "float"
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "entry_price": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "botPosition": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "number",
+          "format": "float"
+        },
+        "entry_price": {
+          "type": "number",
+          "format": "float"
+        },
+        "current_price": {
+          "type": "number",
+          "format": "float"
+        },
+        "profit": {
+          "type": "number",
+          "format": "float"
+        },
+        "profit_percent": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "botStatistic": {
+      "type": "object",
+      "properties": {
+        "profit": {
+          "type": "number",
+          "format": "float"
+        },
+        "profit_percent": {
+          "type": "number",
+          "format": "float"
+        },
+        "amount": {
+          "type": "number",
+          "format": "float"
+        },
+        "status": {
+          "$ref": "#/definitions/botBotStatus"
+        }
+      }
+    },
+    "botStatistics": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "external_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "entry_price": {
+          "type": "number",
+          "format": "float"
+        },
+        "exit_price": {
+          "type": "number",
+          "format": "float"
+        },
+        "quantity": {
+          "type": "number",
+          "format": "float"
+        },
+        "leverage": {
+          "type": "number",
+          "format": "float"
+        },
+        "side": {
+          "type": "string"
+        },
+        "profit": {
+          "type": "number",
+          "format": "float"
+        },
+        "profit_percent": {
+          "type": "number",
+          "format": "float"
+        },
+        "cdate": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "botSwitchBotStateRequest": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "botSwitchBotStateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "botSymbol": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "min_amount": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "botUpdateUserSettingRequest": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/botUser"
+        },
+        "bot": {
+          "$ref": "#/definitions/botBotSetting"
+        },
+        "binance": {
+          "$ref": "#/definitions/botBinanceSetting"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "botUpdateUserSettingResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "botUser": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "telegram": {
+          "type": "string"
+        },
+        "invite": {
+          "type": "string"
+        }
+      }
+    },
+    "botWallet": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}
